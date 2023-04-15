@@ -1,11 +1,22 @@
 import { useState } from 'react'
-import Card from './Card'
+import Die from './Die'
 
 function App() {
 
   return (
     <main>
-      <Card />
+      <div className='dice-container'>
+        <Die value={1} />
+        <Die value={1} />
+        <Die value={1} />
+        <Die value={1} />
+        <Die value={1} />
+        <Die value={1} />
+        <Die value={1} />
+        <Die value={1} />
+        <Die value={1} />
+        <Die value={1} />
+      </div>
     </main>
   )
 }
