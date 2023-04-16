@@ -1,7 +1,18 @@
 import React from "react"
 
-export default function Die(props){
+export default function Die(props) {
+
+    const style = {
+        backgroundColor: props.isHeld ? '#59E391' : 'white'
+    }
+
     return (
-       <div className="die-face">{props.value}</div>
+        <div
+            style={style}
+            className="die-face"
+            onClick={props.holdDice}
+        >
+            {props.value}
+        </div>
     )
 }
