@@ -8,7 +8,7 @@
 
 body {
   margin: 0;
-  background: #242425;
+  background: #0B2434;
   color: aliceblue;
   height: 100vh;
 
@@ -20,16 +20,41 @@ body {
 main {
   margin: 5px;
   background-color: #F5F5F5;
-  height: 400px;
-  min-width: 400px;
+  height: 320px;
+  min-width: 320px;
   border-radius: 5px;
 
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  gap: 25px
 }
 
-.dice-container{
+.header {
+  color: #2B283A;
+  text-align: center;
+  width: 230px;
+  display: flex;
+  flex-direction: column;
+  letter-spacing: -0.03em;
+  gap: 5px;
+}
+
+.header--titel {
+  font-weight: 700;
+  font-size: 25.6px;
+  line-height: 30px;
+}
+
+.header--text {
+  font-weight: 400;
+  font-size: 13.1072px;
+  line-height: 16px;
+  color: #4A4E74;
+}
+
+.dice-container {
   display: grid;
   /* grid-template-rows: repeat(2, 1fr); */
   grid-template-columns: repeat(5, 1fr);
@@ -51,4 +76,22 @@ main {
   align-items: center;
 
   color: #2B283A;
+}
+
+button {
+  width: 92px;
+  height: 35px;
+  background: #5035FF;
+  box-shadow: 0px 3.2px 7.68px rgba(0, 0, 0, 0.18);
+  border-radius: 4px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 16.5px;
+  line-height: 19px;
+  border: 0;
+}
+
+button:hover {
+  background-color: #432dd5;
+  cursor: pointer;
 }
