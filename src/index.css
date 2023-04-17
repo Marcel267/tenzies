@@ -44,13 +44,13 @@ main {
   gap: 5px;
 }
 
-.header--titel {
+.titel {
   font-weight: 700;
   font-size: 25.6px;
   line-height: 30px;
 }
 
-.header--text {
+.text {
   font-weight: 400;
   font-size: 13.1072px;
   line-height: 16px;
@@ -106,4 +106,14 @@ button:focus {
 
 button:active {
   box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.stats>span {
+  width: 90px;
 }
