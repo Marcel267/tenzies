@@ -16,8 +16,7 @@ body {
   justify-content: center;
   align-items: center;
 
-  /* fix confetti overflow */
-  overflow: hidden;
+  overflow: hidden; /* fix confetti overflow */
 }
 
 main {
@@ -59,7 +58,6 @@ main {
 
 .dice-container {
   display: grid;
-  /* grid-template-rows: repeat(2, 1fr); */
   grid-template-columns: repeat(5, 1fr);
   gap: 18px;
 }

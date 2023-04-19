@@ -16,8 +16,7 @@ function App() {
     const timeoutId = setTimeout(() => {
       setTimer(prevTimer => prevTimer + 1);
     }, 1000);
-    //so i can clear it on win
-    setTimeoutId(timeoutId)
+    setTimeoutId(timeoutId) //so i can clear it on win
     return () => clearTimeout(timeoutId);
   }, [timer]);
 
@@ -45,14 +44,6 @@ function App() {
       }
     }
   }, [dice])
-
-  // function genNewDice() {
-  //   return {
-  //     id: nanoid(),
-  //     value: Math.ceil(Math.random() * 6),
-  //     isHeld: false
-  //   }
-  // }
 
   function genNumbers() {
     let array = []
@@ -103,7 +94,6 @@ function App() {
 
   return (
     <main>
-      {/* <span style={{ color: 'blue' }}>{timer}</span> */}
       {tenzies && <Confetti />}
       <div className='header'>
         <span className='titel'>Tenzies</span>
