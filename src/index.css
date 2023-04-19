@@ -109,11 +109,8 @@ button:active {
 }
 
 .stats {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-}
-
-.stats>span {
-  width: 90px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  text-align: center;
 }

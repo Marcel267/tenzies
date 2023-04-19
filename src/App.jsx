@@ -8,13 +8,25 @@ function App() {
   const [dice, setDice] = useState(genNumbers())
   const [tenzies, setTenzies] = useState(false)
   const [counter, setCounter] = useState(0)
-  const [highscore, setHighscore] = useState(false)
+  const [timeHighscore, setTimeHighscore] = useState(false)
+  const [timer, setTimer] = useState(0)
+  const [timeoutId, setTimeoutId] = useState(null);
 
   useEffect(() => {
-    // Retrieve highscore from localStorage
-    const storedHighscore = localStorage.getItem('highscore')
-    const initialHighscore = storedHighscore ? parseInt(storedHighscore) : false
-    setHighscore(initialHighscore)
+    const timeoutId = setTimeout(() => {
+      setTimer(prevTimer => prevTimer + 1);
+    }, 1000);
+    //so i can clear it on win
+    setTimeoutId(timeoutId)
+    return () => clearTimeout(timeoutId);
+  }, [timer]);
+
+
+  useEffect(() => {
+    // Retrieve timeHighscore from localStorage
+    const storedTimeHighscore = localStorage.getItem('timeHighscore')
+    const initialTimeHighscore = storedTimeHighscore ? parseInt(storedTimeHighscore) : false
+    setTimeHighscore(initialTimeHighscore)
   }, [])
 
   useEffect(() => {
@@ -24,11 +36,12 @@ function App() {
 
     if (allHeld && allSameValue) {
       setTenzies(true)
+      clearTimeout(timeoutId)
 
-      // Update highscore if necessary
-      if (!highscore || counter < highscore) {
-        localStorage.setItem('highscore', counter)
-        setHighscore(counter)
+      // Update timeHighscore if necessary
+      if (!timeHighscore || timer < timeHighscore) {
+        localStorage.setItem('timeHighscore', timer)
+        setTimeHighscore(timer)
       }
     }
   }, [dice])
@@ -65,6 +78,7 @@ function App() {
       setDice(genNumbers())
       setTenzies(false)
       setCounter(0)
+      setTimer(0)
     }
   }
 
@@ -89,6 +103,7 @@ function App() {
 
   return (
     <main>
+      {/* <span style={{ color: 'blue' }}>{timer}</span> */}
       {tenzies && <Confetti />}
       <div className='header'>
         <span className='titel'>Tenzies</span>
@@ -100,11 +115,11 @@ function App() {
         {diceElements}
       </div>
       <button onClick={newNumbers}>
-        {tenzies ? 'New Game' : 'Roll'}
+        {tenzies ? 'New Game' : counter > 0 ? `Roll #${counter + 1}` : 'Roll'}
       </button>
       <div className='stats text'>
-        <span>Counter: {counter}</span>
-        <span>Highscore: {highscore || 'N/A'}</span>
+        <span>Time: {timer}s</span>
+        <span>Highscore: {timeHighscore ? `${timeHighscore}s` : 'N/A'}</span>
       </div>
     </main>
   )
